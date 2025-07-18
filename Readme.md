@@ -2,6 +2,9 @@
 
 A simple, fast, and developer-friendly CLI tool to fetch etcd values directly from your terminal. Designed to improve developer productivity by eliminating the need for complex etcd operations or path memorization.
 
+![CLI Screenshot](public/img.png)
+
+
 ## Features
 * Quickly fetch etcd values from dev, stage, or production environments
 * Securely fetch credentials using a private GitLab group
