@@ -1,4 +1,4 @@
-## Etcd CLI Reader – PickMe
+## Etcd CLI Reader
 
 A simple, fast, and developer-friendly CLI tool to fetch etcd values directly from your terminal. Designed to improve developer productivity by eliminating the need for complex etcd operations or path memorization.
 
