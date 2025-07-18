@@ -4,25 +4,28 @@ set -e
 
 echo "Installing ETCD Reader CLI - 18th July 2024"
 
-INSTALL_DIR="/usr/local/bin"
-CLI_FOLDER="$INSTALL_DIR/etcd-reader-cli"
+INSTALL_DIR="$HOME/.local/bin"
+CLI_FOLDER="$HOME/.local/share/etcd-reader-cli"
 WRAPPER="$INSTALL_DIR/etcdreader"
+
+mkdir -p "$INSTALL_DIR"
+mkdir -p "$HOME/.local/share"
 
 echo "Copying CLI files to $CLI_FOLDER"
 chmod -R 755 .
-sudo rm -rf "$CLI_FOLDER"
-sudo mkdir -p "$CLI_FOLDER"
-sudo cp -r . "$CLI_FOLDER"
+rm -rf "$CLI_FOLDER"
+mkdir -p "$CLI_FOLDER"
+cp -r . "$CLI_FOLDER"
 
-sudo chmod +x "$CLI_FOLDER/run.sh"
+chmod +x "$CLI_FOLDER/run.sh"
 
 echo "Creating etcdreader command"
-sudo tee "$WRAPPER" > /dev/null <<EOF
+tee "$WRAPPER" > /dev/null <<EOF
 #!/bin/bash
 exec "$CLI_FOLDER/run.sh" "\$@"
 EOF
 
-sudo chmod +x "$WRAPPER"
+chmod +x "$WRAPPER"
 
 echo "Adding environment variables to ~/.bashrc..."
 
@@ -32,6 +35,10 @@ ENV_BLOCK=$(cat <<EOF
 export SELF_HOSTED_DOMAIN=git.mytaxi.lk
 export PERSONAL_GITLAB_TOKEN=******
 export GITLAB_PROJECT_ID=3158
+# Add ~/.local/bin to PATH if not already present
+if [[ ":\$PATH:" != *":$HOME/.local/bin:"* ]]; then
+    export PATH="$HOME/.local/bin:\$PATH"
+fi
 # <<< ETCD Reader CLI ENV <<<
 EOF
 )
