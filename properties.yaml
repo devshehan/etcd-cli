@@ -1,0 +1,16 @@
+etcd-root:
+  dev:
+    server:
+    port:
+    userName:
+    password:
+  stage:
+    server:
+    port:
+    userName:
+    password:
+  live:
+    server:
+    port:
+    userName:
+    password:
