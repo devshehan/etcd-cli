@@ -24,7 +24,7 @@ func LoadAppConfig() {
 		GitLabToken:      os.Getenv("PERSONAL_GITLAB_TOKEN"),
 		GitLabCfg: GitLabConfig{
 			ProjectIds: ProjectIds{
-				Dev: os.Getenv("GITLAB_DEV_PROJECT_ID"),
+				Dev: os.Getenv("GITLAB_PROJECT_ID"),
 			},
 		},
 	}

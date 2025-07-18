@@ -9,6 +9,7 @@ CLI_FOLDER="$INSTALL_DIR/etcd-reader-cli"
 WRAPPER="$INSTALL_DIR/etcdreader"
 
 echo "Copying CLI files to $CLI_FOLDER"
+chmod -R 755 .
 sudo rm -rf "$CLI_FOLDER"
 sudo mkdir -p "$CLI_FOLDER"
 sudo cp -r . "$CLI_FOLDER"
